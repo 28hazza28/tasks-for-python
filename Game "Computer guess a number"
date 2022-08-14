@@ -1,0 +1,32 @@
+print('Задача 9. Игра «Компьютер угадывает число»')
+
+low = 1
+high = 100
+boy = 23
+flag = 0
+trials = 0
+high1 = 100
+
+while flag == 0:
+  #print('low =', low)
+  #print('high =', high)
+  #print('high + low =', high + low)
+  N = ((low + high) / 2) 
+  #print('N до деления нацело = ', N)
+  if (high1 - N) == 1 and (N != 99) or (high1 - N) == 0.5:
+    N += 1 
+  N = N // 1
+  
+  print('Компьютер: Твое число равно, меньше или больше, чем число' , N , '?')
+  trials += 1
+  if N == boy:
+    print('Мальчик: 1 - равно. Угадал!')
+    flag = 1
+    print ('Кол-во попыток:', trials)
+    print('Конец игры')
+  elif N < boy:
+    print('Мальчик: 2 - больше.')
+    low = N
+  else:
+    print('Мальчик: 3 - меньше.')
+    high = N
