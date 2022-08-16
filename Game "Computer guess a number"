@@ -1,8 +1,8 @@
-print('Задача 9. Игра «Компьютер угадывает число»')
+print('Задача 9. Игра «Угадай число»')
 
 low = 1
 high = 100
-boy = 23
+boy = 11
 flag = 0
 trials = 0
 high1 = 100
@@ -26,7 +26,7 @@ while flag == 0:
     print('Конец игры')
   elif N < boy:
     print('Мальчик: 2 - больше.')
-    low = N
+    low = N + 1
   else:
     print('Мальчик: 3 - меньше.')
-    high = N
+    high = N - 1
