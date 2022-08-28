@@ -1,0 +1,4 @@
+angle_hour = float(input('На какой угол повернулась часовая стрелка с начала суток? - '))
+grad_hours_rest = angle_hour % 30
+angle_minutes = (grad_hours_rest / 30) * 360
+print('С начала', int(angle_hour // 30), 'часа минутная стрелка повернулась на', angle_minutes, 'градусов.')
