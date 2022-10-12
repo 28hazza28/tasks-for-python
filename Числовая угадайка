@@ -1,0 +1,11 @@
+from random import *
+
+target = randint(1, 100)
+answer = int(input('Какое число загадано? - '))
+while answer != target:
+    if answer > target:
+        print('Слишком много, попробуйте еще раз')
+    elif answer < target:
+        print('Слишком мало, попробуйте еще раз')
+    answer = int(input('Какое число загадано? - '))
+print('Вы угадали, поздравляем!')
