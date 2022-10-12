@@ -1,14 +1,41 @@
 from random import *
 
-target = randint(1, 100)
-print('Добро пожаловать в числовую угадайку')
+def is_valid(string):
+    if string.isdigit() and str(int(string)) == string and 1 <= int(string) <= 100:
+        return True
+    else:
+        return False
 
-answer = int(input('Какое число загадано? - '))
 
-while answer != target:
-    if answer > target:
-        print('Слишком много, попробуйте еще раз')
-    elif answer < target:
-        print('Слишком мало, попробуйте еще раз')
-    answer = int(input('Какое число загадано? - '))
-print('Вы угадали, поздравляем!')
+while 1:
+    while 1:
+        right_border = input('Введите правую границу диапазона: ')
+        if int(right_border) <= 1 and is_valid(right_border) is False:
+            print('Граница должна быть целым числом больше 1. Попробуйте ввести снова.')
+        else:
+            break
+    
+    right_border = int(right_border)
+    target = randint(1, right_border)
+    attempts = 0
+    print('Добро пожаловать в числовую угадайку')
+    while 1:
+        answer = input('Какое число загадано? - ')
+        while is_valid(answer) == False:
+            print('А может быть все-таки введем целое число от 1 до 100?')
+        answer = int(answer)
+
+        if answer > target:
+            print('Слишком много, попробуйте еще раз')
+            attempts += 1
+        elif answer < target:
+            print('Слишком мало, попробуйте еще раз')
+            attempts += 1
+        else:
+            attempts += 1
+            print('Вы угадали, поздравляем! Число попыток:', attempts)
+            break
+    if int(input('Хотите сыграть ещё раз? (1 - Да, 0 - Нет')) == 0:
+        break
+print('Спасибо, что играли в числовую угадайку. Еще увидимся...')
+
