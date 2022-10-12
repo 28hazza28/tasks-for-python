@@ -1,7 +1,10 @@
 from random import *
 
 target = randint(1, 100)
+print('Добро пожаловать в числовую угадайку')
+
 answer = int(input('Какое число загадано? - '))
+
 while answer != target:
     if answer > target:
         print('Слишком много, попробуйте еще раз')
