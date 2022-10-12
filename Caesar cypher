@@ -19,5 +19,5 @@ def cezar(text, k):
 txt = 'Hawnj pk swhg xabkna ukq nqj.'
 for i in range(26):
     cezar(txt, i)
-    print('n = ', i)
+    print('    n = ', i)
     print()
