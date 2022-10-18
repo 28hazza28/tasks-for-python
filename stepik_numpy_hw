@@ -1,0 +1,78 @@
+import numpy as np
+
+# Задача 1. Перемножение матриц
+def no_numpy_mult(first, second):
+    """
+    param first: list of "size" lists, each contains "size" floats
+    param second: list of "size" lists, each contains "size" floats
+    """
+    length = len(first) 
+    result = [[0 for i in range(length)] for i in range(length)]
+    for i in range(length):
+        for j in range(length):
+            for k in range(length):
+                result[i][j] += first[i][k] * second[k][j]
+    return result
+
+def numpy_mult(first, second):
+    """
+    param first: np.array[size, size]
+    param second: np.array[size, size]
+    """
+    result = first.dot(second)
+    return result
+    
+    
+# Задача 2. Скалярное произведение векторов
+def no_numpy_scalar(v1, v2):
+    scal = 0
+    #param v1, v2: lists of 3 ints
+    for i in range(len(v1)):
+        scal += v1[i] *v2[i]
+    return scal
+
+def numpy_scalar (v1, v2):
+    #param v1, v2: np.arrays[3]
+    result = v1.dot(v2)
+    return result
+    
+    
+# Задача 3. Сумма четных элементов на главной диагонали
+def diag_2k(a):
+    #param a: np.array[size, size]
+
+    diag = np.diagonal(a)
+    result = sum([i for i in diag if i % 2 == 0])
+    return result
+    
+# Задача 4. Камсам для массива
+def cumsum(A):
+    #param A: np.array[m,n]
+
+    result = np.cumsum(A, axis=1)
+    return result
+    
+# Задача 5. Склеивание
+def transform(X, a=1):
+    """
+    param X: np.array[batch_size, n]
+    """
+    y=np.copy(X)
+    print()
+    y[::, 1::2] = a
+    y[::, ::2] **= 3
+    y = y[::, ::-1]
+    return np.concatenate((X, y), axis=1)
+    
+# Задача 6. Кодирование массива
+def encode(a):
+    ia = np.asarray(a)  # force numpy
+    n = len(ia)
+    if n == 0:
+        return (None, None, None)
+    else:
+        y = ia[1:] != ia[:-1]  # pairwise unequal (string safe)
+        i = np.append(np.where(y), n - 1)  # must include last element posi
+        z = np.diff(np.append(-1, i))  # run lengths
+        p = np.cumsum(np.append(0, z))[:-1]  # positions
+        return (ia[i], z)
